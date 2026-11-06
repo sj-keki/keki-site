@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>케이크 메뉴</title>
+  <meta name="description" content="도넛가게에서 만나는 케이크 메뉴. 전화, 카카오톡, 인스타그램 DM으로 예약 주문받아요.">
+  <meta property="og:title" content="케이크 메뉴">
+  <meta property="og:description" content="도넛가게에서 만나는 케이크 메뉴. 예약 주문받아요.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <div class="wrap">
+      <p class="store" id="storeName"></p>
+      <h1>오늘은 케이크<br>한 조각의 설렘</h1>
+      <p id="tagline"></p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <p class="notice" id="notice"></p>
+
+    <h2 class="section-title">케이크 메뉴</h2>
+    <section class="grid" id="cakeGrid" aria-label="케이크 목록"></section>
+
+    <section class="order-section" id="order">
+      <h2>주문은 이렇게 해주세요</h2>
+      <p>편하신 방법으로 연락 주세요.</p>
+      <div class="order-buttons" id="orderButtons"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="name" id="footName"></p>
+    <p id="footHours"></p>
+    <p id="footAddress"></p>
+  </footer>
+
+  <dialog id="viewer" aria-label="케이크 자세히 보기">
+    <button class="close" type="button" aria-label="닫기" id="closeBtn">✕</button>
+    <div class="photo"><img id="vImg" alt=""></div>
+    <div class="body">
+      <h3 id="vName"></h3>
+      <p class="price" id="vPrice"></p>
+      <p class="desc" id="vDesc"></p>
+      <div class="order-buttons" id="vButtons"></div>
+    </div>
+  </dialog>
+
+  <script src="cakes.js"></script>
+  <script>
+    (function () {
+      var $ = function (id) { return document.getElementById(id); };
+      var won = function (n) { return Number(n).toLocaleString("ko-KR") + "원"; };
+
+      /* ----- 가게 정보 채우기 ----- */
+      document.title = STORE.name + " | 케이크 메뉴";
+      $("storeName").textContent = STORE.name;
+      $("tagline").textContent = STORE.tagline || "";
+      $("tagline").hidden = !STORE.tagline;
+      $("notice").textContent = STORE.orderNotice || "";
+      $("notice").hidden = !STORE.orderNotice;
+      $("footName").textContent = STORE.name;
+      $("footHours").textContent = STORE.hours ? "영업시간 " + STORE.hours : "";
+      $("footAddress").textContent = STORE.address ? "위치 " + STORE.address : "";
+
+      /* ----- 주문 버튼 만들기 ----- */
+      function makeButtons(target, cakeName) {
+        target.textContent = "";
+        if (STORE.phone) {
+          var a = document.createElement("a");
+          a.className = "btn btn-call";
+          a.href = "tel:" + STORE.phone.replace(/[^0-9+]/g, "");
+          a.textContent = "📞 전화 주문 " + STORE.phone;
+          target.appendChild(a);
+        }
+        if (STORE.kakaoUrl) {
+          var k = document.createElement("a");
+          k.className = "btn btn-kakao";
+          k.href = STORE.kakaoUrl;
+          k.target = "_blank";
+          k.rel = "noopener";
+          k.textContent = "💬 카카오톡 채널";
+          target.appendChild(k);
+        }
+        if (STORE.instagramId) {
+          var i = document.createElement("a");
+          i.className = "btn btn-insta";
+          i.href = "https://ig.me/m/" + encodeURIComponent(STORE.instagramId);
+          i.target = "_blank";
+          i.rel = "noopener";
+          i.textContent = "📷 인스타 DM";
+          target.appendChild(i);
+        }
+      }
+      makeButtons($("orderButtons"));
+
+      /* ----- 케이크 카드 ----- */
+      var grid = $("cakeGrid");
+      CAKES.forEach(function (cake, idx) {
+        var card = document.createElement("button");
+        card.type = "button";
+        card.className = "card" + (cake.soldOut ? " soldout" : "");
+        card.setAttribute("aria-label", cake.name + " " + won(cake.price) + " 자세히 보기");
+
+        var photo = document.createElement("div");
+        photo.className = "photo";
+        var img = document.createElement("img");
+        img.src = cake.image;
+        img.alt = cake.name;
+        img.width = 1100;
+        img.height = 1100;
+        img.loading = idx < 2 ? "eager" : "lazy";
+        photo.appendChild(img);
+        card.appendChild(photo);
+
+        if (cake.badge) {
+          var b = document.createElement("span");
+          b.className = "badge";
+          b.textContent = cake.badge;
+          card.appendChild(b);
+        }
+        if (cake.soldOut) {
+          var s = document.createElement("span");
+          s.className = "soldout-label";
+          s.textContent = "품절";
+          card.appendChild(s);
+        }
+
+        var info = document.createElement("div");
+        info.className = "info";
+        var h = document.createElement("h3");
+        h.textContent = cake.name;
+        var p = document.createElement("p");
+        p.className = "price";
+        p.textContent = won(cake.price);
+        var d = document.createElement("p");
+        d.className = "desc";
+        d.textContent = cake.desc || "";
+        info.appendChild(h);
+        info.appendChild(p);
+        if (cake.desc) info.appendChild(d);
+        card.appendChild(info);
+
+        card.addEventListener("click", function () { openViewer(cake); });
+        grid.appendChild(card);
+      });
+
+      /* ----- 크게 보기 ----- */
+      var dlg = $("viewer");
+      function openViewer(cake) {
+        $("vImg").src = cake.image;
+        $("vImg").alt = cake.name;
+        $("vName").textContent = cake.name + (cake.soldOut ? " (품절)" : "");
+        $("vPrice").textContent = won(cake.price);
+        $("vDesc").textContent = cake.desc || "";
+        makeButtons($("vButtons"), cake.name);
+        if (typeof dlg.showModal === "function") dlg.showModal();
+        else dlg.setAttribute("open", "");
+      }
+      $("closeBtn").addEventListener("click", function () { dlg.close(); });
+      dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+:root {
+  --cream: #fff6e9;
+  --paper: #fffdf8;
+  --brown: #4a3326;
+  --muted: #86705f;
+  --caramel: #a9663a;
+  --caramel-soft: #f3dfc7;
+  --line: #ecdac4;
+  --kakao: #fee500;
+  --kakao-text: #3a1d1d;
+  --radius: 22px;
+  --shadow: 0 10px 30px rgba(120, 78, 40, 0.12);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--brown);
+  font-family: "Gowun Dodum", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; }
+
+.wrap { width: min(1000px, 100% - 40px); margin-inline: auto; }
+
+/* ---------- 상단 ---------- */
+.hero {
+  text-align: center;
+  padding: 64px 0 44px;
+  background:
+    radial-gradient(circle at 12% 20%, #ffe9cc 0, transparent 38%),
+    radial-gradient(circle at 90% 8%, #fde0d0 0, transparent 34%),
+    var(--cream);
+}
+.hero .store {
+  display: inline-block;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: var(--caramel);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 16px;
+  margin: 0 0 18px;
+}
+.hero h1 {
+  font-family: "Gowun Batang", "Noto Serif KR", serif;
+  font-size: clamp(32px, 7vw, 52px);
+  line-height: 1.25;
+  margin: 0 0 14px;
+  font-weight: 700;
+}
+.hero p { margin: 0; color: var(--muted); font-size: 18px; }
+
+/* ---------- 안내 ---------- */
+.notice {
+  background: var(--paper);
+  border: 1px dashed #d9bd9b;
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  margin: 0 auto 40px;
+  max-width: 700px;
+  text-align: center;
+  color: var(--brown);
+}
+.notice strong { color: var(--caramel); }
+
+/* ---------- 케이크 카드 ---------- */
+.section-title {
+  font-family: "Gowun Batang", serif;
+  font-size: 26px;
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 340px));
+  justify-content: center;
+  gap: 28px;
+}
+
+.card {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(120, 78, 40, 0.18); }
+.card:focus-visible { outline: 3px solid var(--caramel); outline-offset: 3px; }
+
+.card .photo { aspect-ratio: 1 / 1; background: var(--caramel-soft); overflow: hidden; }
+.card .photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.card:hover .photo img { transform: scale(1.04); }
+
+.card .info { padding: 18px 22px 22px; }
+.card h3 {
+  font-family: "Gowun Batang", serif;
+  font-size: 22px;
+  margin: 0 0 4px;
+}
+.card .price { font-size: 20px; color: var(--caramel); font-weight: 700; margin: 0 0 8px; }
+.card .desc { margin: 0; color: var(--muted); font-size: 15.5px; line-height: 1.6; }
+
+.badge {
+  position: absolute;
+  top: 14px; left: 14px;
+  background: var(--caramel);
+  color: #fff;
+  font-size: 13px;
+  padding: 3px 12px;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+}
+.soldout .photo img { filter: grayscale(0.6) brightness(0.9); }
+.soldout-label {
+  position: absolute;
+  top: 14px; right: 14px;
+  background: rgba(74, 51, 38, 0.85);
+  color: #fff;
+  font-size: 13px;
+  padding: 3px 12px;
+  border-radius: 999px;
+}
+
+/* ---------- 주문 버튼 ---------- */
+.order-buttons { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 50px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.btn:hover { transform: translateY(-2px); filter: brightness(1.04); }
+.btn:focus-visible { outline: 3px solid var(--brown); outline-offset: 2px; }
+.btn-call { background: var(--caramel); color: #fff; }
+.btn-kakao { background: var(--kakao); color: var(--kakao-text); }
+.btn-insta { background: var(--paper); color: var(--caramel); border-color: var(--caramel); }
+
+/* ---------- 주문 방법 영역 ---------- */
+.order-section {
+  margin-top: 64px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 32px;
+  padding: 40px 24px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.order-section h2 { font-family: "Gowun Batang", serif; font-size: 28px; margin: 0 0 8px; }
+.order-section p { margin: 0 0 24px; color: var(--muted); }
+
+/* ---------- 매장 정보 ---------- */
+footer { text-align: center; padding: 44px 0 56px; color: var(--muted); font-size: 15.5px; }
+footer .name { font-family: "Gowun Batang", serif; font-size: 20px; color: var(--brown); margin-bottom: 6px; }
+footer p { margin: 2px 0; }
+
+/* ---------- 큰 사진 보기 ---------- */
+dialog {
+  border: none;
+  padding: 0;
+  border-radius: 28px;
+  width: min(520px, calc(100% - 28px));
+  max-height: calc(100dvh - 28px);
+  background: var(--paper);
+  color: var(--brown);
+  overflow: auto;
+  box-shadow: 0 24px 60px rgba(60, 35, 15, 0.35);
+}
+dialog::backdrop { background: rgba(60, 38, 22, 0.55); }
+dialog .photo { aspect-ratio: 1 / 1; background: var(--caramel-soft); }
+dialog .photo img { width: 100%; height: 100%; object-fit: cover; }
+dialog .body { padding: 20px 24px 26px; text-align: center; }
+dialog h3 { font-family: "Gowun Batang", serif; font-size: 26px; margin: 0 0 2px; }
+dialog .price { font-size: 22px; color: var(--caramel); font-weight: 700; margin: 0 0 10px; }
+dialog .desc { color: var(--muted); margin: 0 0 20px; font-size: 16px; }
+.close {
+  position: absolute;
+  top: 12px; right: 12px;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 253, 248, 0.92);
+  color: var(--brown);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.close:focus-visible { outline: 3px solid var(--caramel); }
+dialog { position: fixed; }
+
+@media (max-width: 520px) {
+  body { font-size: 16.5px; }
+  .hero { padding: 48px 0 32px; }
+  .grid { gap: 22px; }
+  .btn { flex: 1 1 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}

@@ -7,11 +7,11 @@
 const STORE = {
   name: "Keki",            // ← 가게 이름으로 바꿔주세요
   tagline: "도넛 옆에 케이크가 생겼어요",
-  phone: "010-0000-0000",          // ← 전화번호 (하이픈 있어도 됩니다)
+  phone: "010-1234-5678",          // ← 전화번호 (하이픈 있어도 됩니다)
   kakaoUrl: "https://pf.kakao.com/_xxxxxx",   // ← 카카오톡 채널 주소
   instagramId: "your_instagram_id",           // ← 인스타그램 아이디 (@ 빼고)
-  hours: "매일 10:00 – 20:00",      // ← 영업시간
-  address: "경기도 ○○시 ○○로 00",   // ← 매장 주소
+  hours: "매일 10:00 – 22:00",      // ← 영업시간
+  address: "경기도 수원시 영통구 센트럴파크로 6",   // ← 매장 주소
   orderNotice:
     "케이크는 예약 주문으로 준비해 드려요. 전화, 카카오톡, 인스타그램 DM으로 원하시는 날짜와 케이크 종류를 알려주세요.",
 };
@@ -33,15 +33,15 @@ const CAKES = [
     price: 35000,
     desc: "촉촉한 시트와 부드러운 생크림 위에 딸기를 가득 올린 클래식 케이크예요.",
     image: "images/strawberry.jpg",
-    badge: "",
+    badge: "시즌",
     soldOut: false,
   },
   {
     name: "샤인머스캣 케이크",
     price: 35000,
-    desc: "싱그러운 샤인머스캣을 켜켜이 채워 넣은 산뜻한 시즌 케이크예요.",
+    desc: "싱그러운 샤인머스캣을 켜켜이 채워 넣은 산뜻한 케이크예요.",
     image: "images/shine-muscat.jpg",
-    badge: "시즌",
+    badge: "",
     soldOut: true,
   },
 

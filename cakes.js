@@ -42,7 +42,7 @@ const CAKES = [
     desc: "싱그러운 샤인머스캣을 켜켜이 채워 넣은 산뜻한 케이크예요.",
     image: "images/shine-muscat.jpg",
     badge: "",
-    soldOut: true,
+    soldOut: false,
   },
 
   /* ↓ 새 케이크는 여기에 추가하세요 (아래 줄의 앞쪽 // 를 지우고 내용만 바꾸면 돼요)

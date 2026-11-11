@@ -283,3 +283,9 @@ dialog { position: fixed; }
     white-space: nowrap;
   }
 }
+
+.btn .ico {
+  width: 24px;
+  height: 24px;
+  flex: none;
+}

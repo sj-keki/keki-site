@@ -108,7 +108,7 @@
           var m = document.createElement("a");
           m.className = "btn btn-insta";
           m.href = "sms:" + STORE.phone.replace(/[^0-9+]/g, "");
-          m.textContent = "문자 주문";
+          withImg(m, "images/icon-sms.png", "문자 주문");
           target.appendChild(m);
         }
         if (STORE.kakaoUrl) {

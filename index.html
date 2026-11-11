@@ -104,6 +104,13 @@
           withImg(a, "images/icon-phone.png", "전화 주문 " + STORE.phone);
           target.appendChild(a);
         }
+        if (STORE.phone && STORE.showSms) {
+          var m = document.createElement("a");
+          m.className = "btn btn-insta";
+          m.href = "sms:" + STORE.phone.replace(/[^0-9+]/g, "");
+          m.textContent = "문자 주문";
+          target.appendChild(m);
+        }
         if (STORE.kakaoUrl) {
           var k = document.createElement("a");
           k.className = "btn btn-kakao";

@@ -63,6 +63,14 @@
   <script src="cakes.js"></script>
   <script>
     (function () {
+      var s = new URLSearchParams(location.search).get("store");
+      if (s && typeof STORE_VARIANTS !== "undefined" && STORE_VARIANTS[s]) {
+        Object.assign(STORE, STORE_VARIANTS[s]);
+      }
+    })();
+  </script>
+  <script>
+    (function () {
       var $ = function (id) { return document.getElementById(id); };
       var won = function (n) { return Number(n).toLocaleString("ko-KR") + "원"; };
 

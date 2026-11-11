@@ -16,7 +16,7 @@
 
   <header class="hero">
     <div class="wrap">
-      <p class="store" id="storeName"></p>
+      <img class="logo" src="images/logo.png" alt="keki 로고" width="480" height="480">
       <h1>오늘은 케이크<br>한 조각의 설렘</h1>
       <p id="tagline"></p>
     </div>
@@ -60,7 +60,6 @@
 
       /* ----- 가게 정보 채우기 ----- */
       document.title = STORE.name + " | 케이크 메뉴";
-      $("storeName").textContent = STORE.name;
       $("tagline").textContent = STORE.tagline || "";
       $("tagline").hidden = !STORE.tagline;
       $("notice").textContent = STORE.orderNotice || "";

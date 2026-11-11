@@ -264,3 +264,19 @@ dialog { position: fixed; }
   font-size: 20px;
   font-weight: 700;
 }
+
+@media (max-width: 520px) {
+  .occasions {
+    gap: 8px;
+    margin-top: 20px;
+  }
+  .occasions li {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+  .policy {
+    font-size: clamp(13px, 3.8vw, 17px);
+    padding: 14px 12px;
+    white-space: nowrap;
+  }
+}

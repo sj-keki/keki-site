@@ -266,6 +266,9 @@ dialog { position: fixed; }
 }
 
 @media (max-width: 520px) {
+  .hero {
+    padding-bottom: 12px;
+  }
   .occasions {
     gap: 8px;
     margin-top: 20px;
@@ -275,7 +278,7 @@ dialog { position: fixed; }
     padding: 6px 12px;
   }
   .policy {
-    font-size: clamp(13px, 4.0vw, 17px);
+    font-size: clamp(13px, 3.8vw, 17px);
     padding: 14px 12px;
     white-space: nowrap;
   }

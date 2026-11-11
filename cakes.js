@@ -11,7 +11,7 @@ const STORE = {
   kakaoUrl: "https://pf.kakao.com/_xxxxxx",   // ← 카카오톡 채널 주소
   instagramId: "your_instagram_id",           // ← 인스타그램 아이디 (@ 빼고)
   hours: "매일 10:00 – 22:00",      // ← 영업시간
-  address: "경기도 수원시 영통구 센트럴파크로 6",   // ← 매장 주소
+  address: "경기도 수원시 영통구 센트럴파크로 6, 301동 지2층 118호(게이트 1번)",   // ← 매장 주소
   orderNotice:
     "원하시는 날짜에 맞추어 가장 신선하게 준비해 드려요. 전화, 카카오톡, 인스타그램 DM으로 문의주세요.",
 };
@@ -30,7 +30,7 @@ const STORE = {
 const CAKES = [
   {
     name: "순우유 딸기 케이크",
-    price: 35000,
+    price: 39000,
     desc: "촉촉한 시트와 부드러운 생크림 위에 딸기를 가득 올린 클래식 케이크예요.",
     image: "images/strawberry.jpg",
     badge: "시즌",

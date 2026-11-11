@@ -64,5 +64,9 @@ const STORE_VARIANTS = {
     address: "경기 용인시 기흥구 중부대로 785 (부산꼬마김밥)",
     hours: "매일 08:00 – 21:40",
     phone: "010-5257-2938",
+    kakaoUrl: "",
+    instagramId: "",
+    showSms: true,
+    orderNotice: "원하시는 날짜에 맞추어 가장 신선하게 준비해 드려요. 전화 또는 문자 주세요.",
   },
 };

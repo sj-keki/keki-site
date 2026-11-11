@@ -77,13 +77,23 @@
       $("footAddress").textContent = STORE.address ? "위치 " + STORE.address : "";
 
       /* ----- 주문 버튼 만들기 ----- */
+      function withImg(el, src, label) {
+        var img = document.createElement("img");
+        img.className = "ico";
+        img.src = src;
+        img.alt = "";
+        img.width = 24;
+        img.height = 24;
+        el.appendChild(img);
+        el.appendChild(document.createTextNode(label));
+      }
       function makeButtons(target, cakeName) {
         target.textContent = "";
         if (STORE.phone) {
           var a = document.createElement("a");
           a.className = "btn btn-call";
           a.href = "tel:" + STORE.phone.replace(/[^0-9+]/g, "");
-          a.textContent = "📞 전화 주문 " + STORE.phone;
+          withImg(a, "images/icon-phone.png", "전화 주문 " + STORE.phone);
           target.appendChild(a);
         }
         if (STORE.kakaoUrl) {
@@ -92,7 +102,7 @@
           k.href = STORE.kakaoUrl;
           k.target = "_blank";
           k.rel = "noopener";
-          k.textContent = "💬 카카오톡 채널";
+          withImg(k, "images/icon-kakao.png", "카카오톡 채널");
           target.appendChild(k);
         }
         if (STORE.instagramId) {
@@ -101,7 +111,7 @@
           i.href = "https://ig.me/m/" + encodeURIComponent(STORE.instagramId);
           i.target = "_blank";
           i.rel = "noopener";
-          i.textContent = "📷 인스타 DM";
+          withImg(i, "images/icon-insta.png", "instagram DM");
           target.appendChild(i);
         }
       }

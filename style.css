@@ -275,7 +275,7 @@ dialog { position: fixed; }
     padding: 6px 12px;
   }
   .policy {
-    font-size: clamp(13px, 3.8vw, 17px);
+    font-size: clamp(13px, 4.0vw, 17px);
     padding: 14px 12px;
     white-space: nowrap;
   }

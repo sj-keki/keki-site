@@ -33,7 +33,7 @@ img { display: block; max-width: 100%; }
 /* ---------- 상단 ---------- */
 .hero {
   text-align: center;
-  padding: 64px 0 44px;
+  padding: 64px 0 24px;
   background:
     radial-gradient(circle at 12% 20%, #ffe9cc 0, transparent 38%),
     radial-gradient(circle at 90% 8%, #fde0d0 0, transparent 34%),

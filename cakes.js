@@ -29,7 +29,7 @@ const STORE = {
    ------------------------------------------------------------ */
 const CAKES = [
   {
-    name: "딸기 케이크",
+    name: "순우유 딸기 케이크",
     price: 35000,
     desc: "촉촉한 시트와 부드러운 생크림 위에 딸기를 가득 올린 클래식 케이크예요.",
     image: "images/strawberry.jpg",
@@ -37,7 +37,7 @@ const CAKES = [
     soldOut: false,
   },
   {
-    name: "샤인머스캣 케이크",
+    name: "요거트 샤인머스캣 케이크",
     price: 35000,
     desc: "싱그러운 샤인머스캣을 켜켜이 채워 넣은 산뜻한 케이크예요.",
     image: "images/shine-muscat.jpg",
